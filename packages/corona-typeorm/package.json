@@ -1,0 +1,36 @@
+{
+  "name": "@nerdeez/corona-typeorm",
+  "version": "1.0.0",
+  "description": "typeorm models for our corona app",
+  "keywords": [
+    "typeorm",
+    "corona"
+  ],
+  "author": "ywarezk <ywarezk@gmail.com>",
+  "homepage": "https://github.com/ywarezk/corona#readme",
+  "license": "ISC",
+  "main": "lib/corona-typeorm.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ywarezk/corona.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ywarezk/corona/issues"
+  },
+  "dependencies": {
+    "typeorm": "^0.2.24"
+  }
+}
