@@ -1,0 +1,29 @@
+{
+  "name": "@nerdeez/corona-backend",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "ywarezk <ywarezk@gmail.com>",
+  "homepage": "https://github.com/ywarezk/corona#readme",
+  "license": "ISC",
+  "main": "lib/corona-backend.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ywarezk/corona.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ywarezk/corona/issues"
+  }
+}
