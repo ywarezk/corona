@@ -24,3 +24,32 @@ saveLocations(uid: String, locations: [Location])
 ```
 - add also a test for this server.
 
+## launch.json
+
+add this to the launch.json in order to run mocha from your visual studio code ide
+
+```
+    {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Tests",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "env": {
+                "secret": "secret"
+            },
+            "args": [
+                "-u",
+                "bdd",
+                "--timeout",
+                "999999",
+                "--colors",
+                "-r",
+                "ts-node/register",
+                "${workspaceFolder}/**/*.spec.ts"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+```
