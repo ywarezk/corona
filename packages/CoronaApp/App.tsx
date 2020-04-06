@@ -14,28 +14,10 @@ import {
   Text,
 } from 'react-native';
 import Geolocation, { GeoPosition, GeoError } from 'react-native-geolocation-service';
-import {SQLiteDatabase, ResultSet, openDatabase} from 'react-native-sqlite-storage';
+import { DbService } from './services/db.service';
 
 const App = () => {
   const [position, setPosition] = useState<GeoPosition | null>(null);
-  const [db, setDb] = useState<SQLiteDatabase | null>(null);
-
-  useEffect(() => {
-    // const temp = openDatabase;
-    // debugger;
-    const tempDb = openDatabase({name: 'location.db', location: 'default'}, () => {
-      setDb(tempDb);
-    }, (err) => {
-      console.log(`database error: ${err.message}`);
-    });
-    
-
-    return () => {
-      if (db) {
-        db.close()
-      }
-    }
-  }, []);
 
   useEffect(() => {
     Geolocation.requestAuthorization();
@@ -43,23 +25,11 @@ const App = () => {
     const watchId = Geolocation.watchPosition(
       (position: GeoPosition) => {
         setPosition(position);
-        db?.executeSql(`CREATE TABLE IF NOT EXISTS "location" (
-          "id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	        "latitude"	REAL NOT NULL,
-	        "longitude"	REAL NOT NULL,
-	        "time"	TEXT NOT NULL
-        )`, [], () => {
-          db.executeSql(`
-            INSERT INTO "location"
-            ("latitude", "longitude", "time")
-            VALUES (${position.coords.latitude}, ${position.coords.longitude}, '${(new Date().toISOString())}');
-          `, [], () => {
-            console.log("inserted location!");
-          }, (transaction, error) => {
-            console.log(`Error1: ${error.message}`);
-          });
-        }, (transaction, error) => {
-          console.log(`Error2: ${error.message}`);
+        
+        DbService.getInstance().insertLocation(position.coords.latitude, position.coords.longitude).then(() => {
+          console.log('success');
+        }, (err: Error) => {
+          console.log(`error: ${err.message}`);
         })
       },
       (error: GeoError) => {
