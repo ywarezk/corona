@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from 'typeorm';
-import { User } from './user.entity';
+// import { User } from './user.entity';
 
 @Entity()
 export class Location extends BaseEntity {
@@ -15,6 +15,6 @@ export class Location extends BaseEntity {
     @Column()
     time: Date;
 
-    @ManyToOne(() => User)
-    user: User;
+    // @ManyToOne(() => User)
+    // user: User;
 }

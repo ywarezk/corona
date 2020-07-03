@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/ywarezk/corona/issues"
   },
-  "dependencies": {
+  "peerDependencies": {
     "typeorm": "^0.2.24"
   }
 }

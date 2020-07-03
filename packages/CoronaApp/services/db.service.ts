@@ -7,6 +7,7 @@
  * @copyright: Nerdeez Ltd
  */
 
+import 'reflect-metadata';
 import { createConnection, Connection } from 'typeorm/browser';
 import { Location } from '@nerdeez/corona-typeorm';
 
